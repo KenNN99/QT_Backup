@@ -6,7 +6,6 @@ overWriteDialog::overWriteDialog(QWidget *parent) :
     ui(new Ui::overWriteDialog)
 {
     ui->setupUi(this);
-
 }
 
 overWriteDialog::~overWriteDialog()

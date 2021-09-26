@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>overWriteDialog</class>
- <widget class="QDialog" name="overWriteDialog">
+ <class>overwrte_R_Dialog</class>
+ <widget class="QDialog" name="overwrte_R_Dialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>523</width>
+    <width>400</width>
     <height>300</height>
    </rect>
   </property>
@@ -22,7 +22,7 @@
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>These files will be overwrite/remove</string>
+        <string>These files will be remove</string>
        </property>
       </widget>
      </item>
@@ -45,12 +45,12 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>overWriteDialog</receiver>
+   <receiver>overwrte_R_Dialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>512</x>
-     <y>289</y>
+     <x>248</x>
+     <y>254</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -61,48 +61,16 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>overWriteDialog</receiver>
+   <receiver>overwrte_R_Dialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>512</x>
-     <y>289</y>
+     <x>316</x>
+     <y>260</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>overWriteDialog</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>429</x>
-     <y>277</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>261</x>
-     <y>149</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>overWriteDialog</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>429</x>
-     <y>277</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>261</x>
-     <y>149</y>
     </hint>
    </hints>
   </connection>

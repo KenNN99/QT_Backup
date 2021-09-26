@@ -21,19 +21,31 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     operation.cpp \
-    overwritedialog.cpp
+    overwritedialog.cpp \
+    overwriterecovery.cpp \
+    overwrte_r_dialog.cpp \
+    update_a_dialog.cpp \
+    updatedialog.cpp
 
 HEADERS += \
     CFileSystemModel.h \
     appenddialog.h \
     mainwindow.h \
     operation.h \
-    overwritedialog.h
+    overwritedialog.h \
+    overwriterecovery.h \
+    overwrte_r_dialog.h \
+    update_a_dialog.h \
+    updatedialog.h
 
 FORMS += \
     appenddialog.ui \
     mainwindow.ui \
-    overwritedialog.ui
+    overwritedialog.ui \
+    overwriterecovery.ui \
+    overwrte_r_dialog.ui \
+    update_a_dialog.ui \
+    updatedialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
