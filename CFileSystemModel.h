@@ -13,5 +13,6 @@ public:
     bool setData(const QModelIndex &index, const QVariant &value, int role);
 private:
     bool recursiveCheck(const QModelIndex &index, const QVariant &value);
+    void changeParent(const QModelIndex &index, const QVariant &value);
 };
 #endif // CFileSystemModel_H

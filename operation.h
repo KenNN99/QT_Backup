@@ -28,6 +28,7 @@ struct DIR_LIST_STRUCT
 {
     QString dir_name;
     std::vector<BACKUP_INFO_STRUCT> info_list;
+    bool need_copy;
 };
 
 int readFileInfo(std::fstream& data_file, QFileInfoList file_info, QString dir_name, QString raw_dir);

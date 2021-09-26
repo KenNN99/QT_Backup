@@ -9,6 +9,8 @@
 #include "operation.h"
 #include <QDateTime>
 #include "overwritedialog.h"
+#include "appenddialog.h"
+#include <QProcess>
 
 #define DATA_FILE_NAME "/.b_data.txt"
 
@@ -33,7 +35,8 @@ public:
     QString getRawDir();
 
 signals:
-    void sendOverwriteList(QString);
+    void sendOverwritePath(QString);
+    void sendOverwriteList(QStringList);
 
 private slots:
     void on_pushButton_clicked();
@@ -46,6 +49,8 @@ private slots:
 
     void get_overwrite_dialog_signal(bool flag);
 
+    void get_append_dialog_signal(bool flag);
+
 private:
     Ui::MainWindow *ui;
     CFileSystemModel* model = new CFileSystemModel;
@@ -57,9 +62,17 @@ private:
 
     QStringList overwrite_file_list;
     overWriteDialog* o_dialog;
+    AppendDialog* a_dialog;
+
+    std::vector<DIR_LIST_STRUCT> fresh_backup_info;
 
     int refreshRawCheckbox();
     int checkAppendBackup(std::vector<DIR_LIST_STRUCT>& dir_list_vector);
+    int buildFreshList(QFileInfoList file_info_list);
+    int checkDirinFreshList(QFileInfo checking);
+    int checkFileinFreshList(QFileInfo checking, int index);
+    int appendCopyFile();
+    int makeDFile();
 };
 
 #endif // MAINWINDOW_H

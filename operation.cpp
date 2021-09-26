@@ -339,6 +339,7 @@ int check_src_file_info(QString src_path, QFile& data_file, vector<DIR_LIST_STRU
             {
                 dir_list_temp.dir_name = dir_name_temp;
                 dir_list_temp.info_list = file_info_vector;
+                dir_list_temp.need_copy = false;
                 dir_list_vector.push_back(dir_list_temp);
                 file_info_vector.clear();
             }
@@ -388,6 +389,7 @@ int check_src_file_info(QString src_path, QFile& data_file, vector<DIR_LIST_STRU
     {
         dir_list_temp.dir_name = dir_name_temp;
         dir_list_temp.info_list = file_info_vector;
+        dir_list_temp.need_copy = false;
         dir_list_vector.push_back(dir_list_temp);
         file_info_vector.clear();
     }
