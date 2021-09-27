@@ -222,7 +222,7 @@
            <widget class="QComboBox" name="comboBox_2">
             <item>
              <property name="text">
-              <string>U</string>
+              <string>Update</string>
              </property>
             </item>
             <item>

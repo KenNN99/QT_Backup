@@ -518,8 +518,8 @@ int MainWindow::refreshRecoveryCheckbox()
     QFile data_file(backup_dir_name + DATA_FILE_NAME);
     if(!data_file.exists())
     {
-        model->setData(model->index(raw_dir_name),Qt::Checked,Qt::CheckStateRole);
-        return 0;
+        qDebug()<<"Data file Missing!";
+        return -1;
     }
     if(!data_file.open(QIODevice::ReadOnly|QIODevice::Text))
     {
@@ -555,19 +555,26 @@ int MainWindow::checkRecovery()
             }
             else
             {
-                QFileInfo checking_file(recovery_dir_name + dir_iter.dir_name + "/" + info_iter.name);
+                QFileInfo checking_file(recovery_dir_name + dir_iter.dir_name + info_iter.name);
 
                 uint ttime = checking_file.lastModified().toTime_t();
                 uint stime = info_iter.m_time.toTime_t();
 
+                qDebug()<<checking_file.groupId()<<" "<<info_iter.gid;
+                qDebug()<<checking_file.ownerId()<<" "<<info_iter.uid;
+                qDebug()<<(int)checking_file.permissions()<<" "<<info_iter.permission;
+                qDebug()<<check_file_type(checking_file,info_iter.type);
+                qDebug()<<checking_file.lastModified()<<" "<<info_iter.m_time;
+                qDebug()<<ttime<<" "<<stime;
                 if(
                         !(checking_file.groupId()==info_iter.gid &&
                         checking_file.ownerId()==info_iter.uid &&
                         check_file_type(checking_file,info_iter.type) &&
                         (int)checking_file.permissions()==info_iter.permission &&
-                        ttime<=stime)
+                        ttime>=stime)
                         )
                 {
+                    qDebug()<<backup_dir_name + dir_iter.dir_name + info_iter.name;
                     model1->setData(model1->index(backup_dir_name + dir_iter.dir_name + info_iter.name),Qt::Checked,Qt::CheckStateRole);
                 }
             }
@@ -789,7 +796,7 @@ void MainWindow::get_r_t_overwrite_signal(bool flag)
 void MainWindow::on_comboBox_2_currentTextChanged(const QString &arg1)
 {
     qDebug()<<arg1;
-    if(arg1 == "U")
+    if(arg1 == "Update")
     {
         qDebug()<<"UPDATE";
         current_r_operate = _update;
