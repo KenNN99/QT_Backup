@@ -12,7 +12,10 @@
 #include "appenddialog.h"
 #include "update_a_dialog.h"
 #include "overwrte_r_dialog.h"
+#include "copydonedialog.h"
 #include <QProcess>
+#include <QFileSystemWatcher>
+#include "overwriterecovery.h"
 
 #define DATA_FILE_NAME "/.b_data.txt"
 
@@ -47,6 +50,7 @@ signals:
     void sendROverwritePath(QString);
     void sendOverwriteList(QStringList);
     void sendROverwriteList(QStringList);
+    void sendWOverwritePath(QString);
 
 private slots:
     void on_pushButton_clicked();
@@ -73,6 +77,20 @@ private slots:
 
     void on_comboBox_2_currentTextChanged(const QString &arg1);
 
+    void on_tabWidget_currentChanged(int index);
+
+    void get_w_overwrite_dialog_signal(bool flag);
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_OpenDir_3_clicked();
+
+    void on_file_changed(const QString &file);
+
+    void on_directory_changed(const QString &file);
+
 private:
     Ui::MainWindow *ui;
     CFileSystemModel* model = new CFileSystemModel;
@@ -86,15 +104,25 @@ private:
     backup_operate current_operate = _append;
     recovery_operate current_r_operate = _update;
 
+    QString target_dir_name;
+    QString watch_dir_name;
+    bool target_selected = false;
+    bool watch_selected = false;
+    bool watching = false;
+
     QStringList overwrite_file_list;
     QStringList r_overwrite_file_list;
     overWriteDialog* o_dialog;
+    overwriteRecovery* o_w_dialog;
     AppendDialog* a_dialog;
     Update_a_Dialog* u_dialog;
     overwrte_R_Dialog* o_r_dialog;
+    CopyDoneDialog* c_d_dialog;
+    QFileSystemWatcher* watcher;
 
     std::vector<DIR_LIST_STRUCT> fresh_backup_info;
     std::vector<DIR_LIST_STRUCT> recovery_info;
+    std::vector<DIR_LIST_STRUCT> watched_info;
 
     int refreshRawCheckbox();
     int checkAppendBackup(std::vector<DIR_LIST_STRUCT>& dir_list_vector);
@@ -109,6 +137,7 @@ private:
     int recoveryCopyFile();
     int overwriteRecovery_f();
     int sortOverwriteInfo();
+    int makeTFile();
 };
 
 #endif // MAINWINDOW_H

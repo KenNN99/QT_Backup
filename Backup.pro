@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     CFileSystemModel.cpp \
     appenddialog.cpp \
+    copydonedialog.cpp \
     main.cpp \
     mainwindow.cpp \
     operation.cpp \
@@ -30,6 +31,7 @@ SOURCES += \
 HEADERS += \
     CFileSystemModel.h \
     appenddialog.h \
+    copydonedialog.h \
     mainwindow.h \
     operation.h \
     overwritedialog.h \
@@ -40,6 +42,7 @@ HEADERS += \
 
 FORMS += \
     appenddialog.ui \
+    copydonedialog.ui \
     mainwindow.ui \
     overwritedialog.ui \
     overwriterecovery.ui \

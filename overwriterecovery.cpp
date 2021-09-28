@@ -20,7 +20,7 @@ void overwriteRecovery::on_buttonBox_2_accepted()
 
 void overwriteRecovery::on_buttonBox_2_rejected()
 {
-    emit confirmInfo(true);
+    emit confirmInfo(false);
 }
 
 void overwriteRecovery::get_file_list(QString backup_dir)
